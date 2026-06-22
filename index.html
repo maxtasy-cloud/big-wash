@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIG WASH — Стирка, которую вы полюбите</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="bgBubbleCanvas" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo" aria-label="BIG WASH">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4046 2277" style="height:50px;width:auto;fill-rule:evenodd;clip-rule:evenodd">
+      <path d="M294 0l3459 0c81,0 154,33 207,86 53,53 86,127 86,208l0 1689c0,81 -33,155 -86,208 -53,53 -126,86 -207,86l-3459 0c-81,0 -155,-33 -208,-86 -53,-53 -86,-127 -86,-208l0 -1689c0,-81 33,-155 86,-208 53,-53 127,-86 208,-86zm3459 157l-3459 0c-38,0 -72,15 -97,40 -25,25 -40,59 -40,97l0 1689c0,38 15,72 40,97 25,25 59,40 97,40l3459 0c37,0 72,-15 96,-40 25,-25 41,-59 41,-97l0 -1689c0,-38 -16,-72 -41,-97 -24,-25 -59,-40 -96,-40z" fill="white"/>
+      <path d="M2012 839l0 140c-16,7 -39,7 -59,7 -111,0 -152,-88 -152,-188 0,-218 290,-241 448,-181l1 -157c-129,-58 -369,-59 -496,-12 -139,51 -238,162 -238,332 0,260 193,387 435,387 114,0 205,-12 301,-40l0 -277c21,7 42,15 63,24 64,25 129,51 214,51 84,0 149,-26 213,-51 63,-25 123,-49 200,-49 78,0 137,24 201,49 63,25 129,51 213,51 75,0 135,-20 191,-42l0 -158c-60,23 -117,45 -191,45 -77,0 -137,-24 -200,-49 -64,-25 -130,-51 -214,-51 -84,0 -150,26 -213,51 -63,25 -123,49 -200,49 -78,0 -138,-24 -201,-49 -63,-25 -129,-51 -213,-51 -38,0 -72,5 -103,13l0 156zm1535 -356c-60,24 -117,45 -191,45 -77,0 -137,-23 -200,-48 -64,-26 -130,-52 -214,-52 -84,0 -150,26 -213,52 -63,25 -123,48 -200,48 -73,0 -130,-20 -189,-44l0 158c56,22 115,42 189,42 84,0 149,-26 213,-52 63,-25 123,-48 200,-48 78,0 137,23 201,48 63,26 129,52 213,52 75,0 135,-21 191,-43zm0 483c-60,24 -117,45 -191,45 -77,0 -137,-23 -200,-48 -64,-26 -130,-52 -214,-52 -84,0 -150,26 -213,52 -63,25 -123,48 -200,48 -73,0 -130,-20 -189,-44l0 158c56,22 115,42 189,42 84,0 149,-26 213,-52 63,-25 123,-48 200,-48l4 0 0 778 257 0 0 -338c0,-20 12,-40 30,-47 30,-11 58,15 58,45l0 340 254 0 0 -380c0,-110 -82,-219 -188,-219 -64,0 -120,36 -154,91l0 -198c46,16 95,28 152,28 75,0 135,-21 191,-43zm-2519 299l-1 0 -116 -3 -82 237 -16 0 -53 -235 -260 0 154 578 267 1 95 -181 9 0 3 1 3 -1 8 0 95 181 268 -1 153 -578 -260 0 -52 235 -17 0 -82 -237zm9 -489c25,-9 48,-23 66,-41 33,-33 54,-78 54,-127 0,-99 -82,-180 -183,-180l-471 0 0 704 496 0c51,0 97,-20 130,-53 33,-32 53,-77 53,-127 0,-86 -62,-158 -145,-176zm-276 -213l69 0c50,0 90,39 90,88 0,48 -40,87 -90,87l-69 0zm69 434l-69 0 0 -176 69 0c50,0 90,40 90,88 0,48 -40,88 -90,88zm388 -454l258 0 0 -112 -258 0zm258 52l-16 537 -225 0 -17 -537zm723 1249c-33,-85 -26,-177 -26,-268 0,-90 3,-176 -50,-247 -62,-82 -175,-94 -266,-92 -118,3 -294,45 -294,208 0,4 0,8 0,11l243 0c1,-22 9,-46 22,-63 22,-28 65,-29 85,4 23,37 2,83 -30,102 -32,19 -70,17 -105,20 -92,7 -218,15 -242,136 -11,55 10,120 51,155 56,48 140,57 208,42 58,-13 108,-43 133,-86 4,28 11,55 18,79l253 0zm-276 -161c-13,17 -34,26 -56,22 -29,-7 -48,-40 -41,-71 4,-16 14,-28 27,-36 22,-14 47,-24 70,-37l0 122zm981 -29c-3,180 -213,209 -339,209 -239,0 -345,-79 -360,-181l294 0c-2,25 20,49 51,57 30,7 77,-6 73,-47 -4,-39 -53,-46 -82,-49 -98,-8 -210,-6 -285,-86 -73,-78 -53,-201 33,-259 55,-37 140,-60 259,-60 198,0 294,64 320,151l-253 0c-6,-17 -23,-32 -45,-37 -19,-5 -41,-2 -56,12 -15,15 -15,41 -2,58 15,19 44,23 66,25 127,13 330,18 327,208z" fill="white"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#what-we-wash">Что стираем</a></li>
+    <li><a href="#services">Цены</a></li>
+    <li><a href="#how">Как работает</a></li>
+    <li><a href="#features">Преимущества</a></li>
+    <li><a href="#promo">Акция</a></li>
+    <li><a href="#contacts" class="btn-nav">Контакты</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<nav class="mobile-menu" id="mobile-menu">
+  <a href="#what-we-wash">Что стираем</a>
+  <a href="#services">Цены</a>
+  <a href="#how">Как работает</a>
+  <a href="#features">Преимущества</a>
+  <a href="#promo">Акция</a>
+  <a href="#contacts" class="btn-nav-mob">Контакты</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="bubbleCanvas"></canvas>
+
+  <div class="hero-photo-card">
+    <img src="photos/chad_0a6b5872669143b28fc168bc3ba12eef.jpg" alt="BIG WASH — стирка с удовольствием">
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">Прачечная самообслуживания</div>
+    <h1 class="hero-h1">
+      Стирка, которую<br>
+      <span class="accent">вы полюбите.</span>
+    </h1>
+    <p class="hero-desc">
+      Профессиональные машины ASKO, большой барабан 10 кг для любых вещей.
+      Постирали, высушили, забрали — всего за полтора часа.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-gradient">✦ Цены и услуги</a>
+      <a href="#how" class="btn-outline-hero">Как это работает</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="strip-stat reveal">
+    <div class="strip-num"><span class="counter" data-to="6">0</span> ASKO</div>
+    <div class="strip-label">Профессиональные машины</div>
+  </div>
+  <div class="strip-stat reveal reveal-s1">
+    <div class="strip-num">От <span class="counter" data-to="350">0</span> ₽</div>
+    <div class="strip-label">Стирка / цикл</div>
+  </div>
+  <div class="strip-stat reveal reveal-s2">
+    <div class="strip-num"><span class="counter" data-to="7">0</span> / 7</div>
+    <div class="strip-label">Работаем ежедневно</div>
+  </div>
+</div>
+
+<!-- WHAT WE WASH -->
+<section id="what-we-wash">
+  <div style="text-align:center;margin-bottom:48px;">
+    <div class="section-tag reveal">Что стираем</div>
+    <h2 class="section-h2 reveal reveal-s1">У нас вы сможете постирать всё,<br>что не лезет в домашнюю машину</h2>
+    <p class="section-sub reveal reveal-s2">Барабан 10 кг справляется с объёмными вещами за один цикл.</p>
+  </div>
+  <div class="wash-grid">
+    <div class="wash-card reveal">
+      <span class="wash-icon">🛋️</span>
+      <div class="wash-label">Чехлы<br>на диваны</div>
+    </div>
+    <div class="wash-card reveal reveal-s1">
+      <span class="wash-icon">🧸</span>
+      <div class="wash-label">Мягкие<br>игрушки</div>
+    </div>
+    <div class="wash-card reveal reveal-s2">
+      <span class="wash-icon">🛏️</span>
+      <div class="wash-label">Одеяла<br>и пледы</div>
+    </div>
+    <div class="wash-card reveal reveal-s3">
+      <span class="wash-icon">🧥</span>
+      <div class="wash-label">Куртки<br>и пуховики</div>
+    </div>
+    <div class="wash-card reveal">
+      <span class="wash-icon">🚗</span>
+      <div class="wash-label">Автомобильные<br>чехлы</div>
+    </div>
+    <div class="wash-card reveal reveal-s1">
+      <span class="wash-icon">🌙</span>
+      <div class="wash-label">Постельное<br>бельё</div>
+    </div>
+    <div class="wash-card reveal reveal-s2">
+      <span class="wash-icon">🪶</span>
+      <div class="wash-label">Подушки</div>
+    </div>
+    <div class="wash-card reveal reveal-s3">
+      <span class="wash-icon">🏊</span>
+      <div class="wash-label">Полотенца и прочее</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-tag reveal">Цены</div>
+    <h2 class="section-h2 reveal reveal-s1">Три простых тарифа</h2>
+    <p class="section-sub reveal reveal-s2">
+      «Чистые часы» — в будни 10:00–13:00 скидка 50 ₽ с каждой стирки.
+    </p>
+  </div>
+  <div class="services-grid">
+
+    <div class="svc-card reveal">
+      <div class="svc-icon">🌀</div>
+      <div class="svc-price-label">Тариф</div>
+      <div class="svc-name">Стирка</div>
+      <div class="svc-desc">Полный цикл в профессиональной машине с большим барабаном.</div>
+      <div class="svc-price">400<span class="cur">₽</span></div>
+      <div class="svc-price-note">400 ₽ / цикл</div>
+    </div>
+
+    <div class="svc-card featured reveal reveal-s1">
+      <div class="svc-icon">⭐</div>
+      <div class="svc-price-label">Популярное</div>
+      <div class="svc-name">«Чистые часы»</div>
+      <div class="svc-desc">Утренняя акция в будни с 10:00 до 13:00 — скидка 50 ₽ с каждого цикла. Те же машины, та же стирка.</div>
+      <div class="svc-price">350<span class="cur">₽</span></div>
+      <div class="svc-price-note">будни 10:00–13:00 / цикл</div>
+    </div>
+
+    <div class="svc-card reveal reveal-s2">
+      <div class="svc-icon">💨</div>
+      <div class="svc-price-label">Тариф</div>
+      <div class="svc-name">Сушка</div>
+      <div class="svc-desc">Постирали? Быстро высушим на щадящих режимах.</div>
+      <div class="svc-price">200<span class="cur">₽</span></div>
+      <div class="svc-price-note">200 ₽ / цикл</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="how-header">
+    <div class="section-tag reveal">Инструкция</div>
+    <h2 class="section-h2 reveal reveal-s1">Четыре простых шага</h2>
+  </div>
+  <div class="steps-wrap">
+    <div class="step-card reveal">
+      <div class="step-circle">1</div>
+      <div class="step-title">Работаем ежедневно</div>
+      <div class="step-desc">Приходите без записи с 10:00 до 22:00. Бесплатная парковка у дома.</div>
+    </div>
+    <div class="step-card reveal reveal-s1">
+      <div class="step-circle">2</div>
+      <div class="step-title">Загружайте вещи</div>
+      <div class="step-desc">Закладывайте вещи в свободную машину, добавляйте свои средства и выбирайте программу.</div>
+    </div>
+    <div class="step-card reveal reveal-s2">
+      <div class="step-circle">3</div>
+      <div class="step-title">Оплачивайте на терминале</div>
+      <div class="step-desc">Любой способ оплаты: наличные, карта или QR-код на терминале. Там же можно налить гель и кондиционер.</div>
+    </div>
+    <div class="step-card reveal reveal-s3">
+      <div class="step-circle">4</div>
+      <div class="step-title">Забирайте чистым</div>
+      <div class="step-desc">Через 1–1,5 часа вещи выстираны и высушены. Готово!</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="features-header">
+    <div class="section-tag reveal">Преимущества</div>
+    <h2 class="section-h2 reveal reveal-s1">Почему выбирают BIG WASH.</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feat-item reveal">
+      <div class="feat-icon">🏭</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Машины ASKO — промышленный стандарт</div>
+        <div class="feat-desc">Большой барабан 10 кг. Пуховики, одеяла, крупные вещи — без проблем.</div>
+      </div>
+    </div>
+    <div class="feat-item reveal reveal-s1">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Результат за 1,5 часа</div>
+        <div class="feat-desc">Стирка и сушка в одно посещение. Вещи готовы к носке сразу.</div>
+      </div>
+    </div>
+    <div class="feat-item reveal reveal-s2">
+      <div class="feat-icon">💳</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Любой способ оплаты</div>
+        <div class="feat-desc">Наличные, банковские карты, QR-код — выбирайте удобный вариант.</div>
+      </div>
+    </div>
+    <div class="feat-item reveal reveal-s3">
+      <div class="feat-icon">🅿️</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Бесплатная парковка</div>
+        <div class="feat-desc">Большая парковка рядом с домом. Приезжайте с крупными вещами — места хватит.</div>
+      </div>
+    </div>
+    <div class="feat-item reveal">
+      <div class="feat-icon">🛋️</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Комфортный зал ожидания</div>
+        <div class="feat-desc">Уютный диван, чистота, хорошее освещение. Ждите с удовольствием.</div>
+      </div>
+    </div>
+    <div class="feat-item reveal reveal-s1">
+      <div class="feat-icon">🔧</div>
+      <div class="feat-text-wrap">
+        <div class="feat-title">Поддержка 24/7</div>
+        <div class="feat-desc">Круглосуточная техническая поддержка. Звоните, если что-то пошло не так.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section id="promo">
+  <div class="promo-tag">🌙 Акция</div>
+  <h2 class="section-h2 reveal">«Чистые часы» — стирка дешевле</h2>
+  <p class="section-sub reveal reveal-s1">
+    Приходите в будни утром и экономьте 50 рублей с каждой загрузки. Никаких очередей — только ваши вещи и машины ASKO.
+  </p>
+  <div class="promo-detail reveal reveal-s2">
+    <strong>Понедельник — пятница</strong>
+    <span>·</span>
+    с 10:00 до 13:00
+    <span>·</span>
+    Скидка <strong>−50 ₽</strong>
+  </div>
+  <div class="reveal reveal-s3">
+    <a href="#contacts" class="btn-gradient">Узнать подробнее</a>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="contacts-info">
+    <div class="section-tag reveal">Контакты</div>
+    <h2 class="section-h2 reveal reveal-s1">Приходите.<br>Мы ждём вас.</h2>
+    <div class="contact-line reveal reveal-s2">
+      <div class="contact-icon">📍</div>
+      <span>СПб, ул. Дыбенко 8/3<br><small style="color:var(--muted);font-weight:500">у подъезда №1 (где OZON) · м. Дыбенко</small></span>
+    </div>
+    <div class="contact-line reveal reveal-s3">
+      <div class="contact-icon">📞</div>
+      <a href="tel:88005050006">8 800 505-00-06</a>
+    </div>
+    <div class="contact-line reveal">
+      <div class="contact-icon">✉️</div>
+      <a href="mailto:bigwash-spb@yandex.ru">bigwash-spb@yandex.ru</a>
+    </div>
+    <div class="contact-line reveal reveal-s1">
+      <div class="contact-icon">🕐</div>
+      <span>Ежедневно · 10:00 — 22:00 · без выходных</span>
+    </div>
+  </div>
+  <div class="reveal reveal-s1" style="border-radius:20px;overflow:hidden;min-height:420px;border:1px solid rgba(124,58,237,0.3);box-shadow:0 0 60px rgba(124,58,237,0.15);margin-top:40px;">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/org/big_wash/198323153822/?from=mapframe&ll=30.456355%2C59.900832&z=17"
+      width="100%"
+      height="100%"
+      style="border:0;display:block;min-height:420px;"
+      loading="lazy"
+      allowfullscreen
+      title="BIG WASH — Санкт-Петербург, ул. Дыбенко 8/3"
+    ></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-brand" aria-label="BIG WASH">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4046 2277" style="width:90px;height:auto;fill-rule:evenodd;clip-rule:evenodd;opacity:0.55">
+      <path d="M294 0l3459 0c81,0 154,33 207,86 53,53 86,127 86,208l0 1689c0,81 -33,155 -86,208 -53,53 -126,86 -207,86l-3459 0c-81,0 -155,-33 -208,-86 -53,-53 -86,-127 -86,-208l0 -1689c0,-81 33,-155 86,-208 53,-53 127,-86 208,-86zm3459 157l-3459 0c-38,0 -72,15 -97,40 -25,25 -40,59 -40,97l0 1689c0,38 15,72 40,97 25,25 59,40 97,40l3459 0c37,0 72,-15 96,-40 25,-25 41,-59 41,-97l0 -1689c0,-38 -16,-72 -41,-97 -24,-25 -59,-40 -96,-40z" fill="white"/>
+      <path d="M2012 839l0 140c-16,7 -39,7 -59,7 -111,0 -152,-88 -152,-188 0,-218 290,-241 448,-181l1 -157c-129,-58 -369,-59 -496,-12 -139,51 -238,162 -238,332 0,260 193,387 435,387 114,0 205,-12 301,-40l0 -277c21,7 42,15 63,24 64,25 129,51 214,51 84,0 149,-26 213,-51 63,-25 123,-49 200,-49 78,0 137,24 201,49 63,25 129,51 213,51 75,0 135,-20 191,-42l0 -158c-60,23 -117,45 -191,45 -77,0 -137,-24 -200,-49 -64,-25 -130,-51 -214,-51 -84,0 -150,26 -213,51 -63,25 -123,49 -200,49 -78,0 -138,-24 -201,-49 -63,-25 -129,-51 -213,-51 -38,0 -72,5 -103,13l0 156zm1535 -356c-60,24 -117,45 -191,45 -77,0 -137,-23 -200,-48 -64,-26 -130,-52 -214,-52 -84,0 -150,26 -213,52 -63,25 -123,48 -200,48 -73,0 -130,-20 -189,-44l0 158c56,22 115,42 189,42 84,0 149,-26 213,-52 63,-25 123,-48 200,-48 78,0 137,23 201,48 63,26 129,52 213,52 75,0 135,-21 191,-43zm0 483c-60,24 -117,45 -191,45 -77,0 -137,-23 -200,-48 -64,-26 -130,-52 -214,-52 -84,0 -150,26 -213,52 -63,25 -123,48 -200,48 -73,0 -130,-20 -189,-44l0 158c56,22 115,42 189,42 84,0 149,-26 213,-52 63,-25 123,-48 200,-48l4 0 0 778 257 0 0 -338c0,-20 12,-40 30,-47 30,-11 58,15 58,45l0 340 254 0 0 -380c0,-110 -82,-219 -188,-219 -64,0 -120,36 -154,91l0 -198c46,16 95,28 152,28 75,0 135,-21 191,-43zm-2519 299l-1 0 -116 -3 -82 237 -16 0 -53 -235 -260 0 154 578 267 1 95 -181 9 0 3 1 3 -1 8 0 95 181 268 -1 153 -578 -260 0 -52 235 -17 0 -82 -237zm9 -489c25,-9 48,-23 66,-41 33,-33 54,-78 54,-127 0,-99 -82,-180 -183,-180l-471 0 0 704 496 0c51,0 97,-20 130,-53 33,-32 53,-77 53,-127 0,-86 -62,-158 -145,-176zm-276 -213l69 0c50,0 90,39 90,88 0,48 -40,87 -90,87l-69 0zm69 434l-69 0 0 -176 69 0c50,0 90,40 90,88 0,48 -40,88 -90,88zm388 -454l258 0 0 -112 -258 0zm258 52l-16 537 -225 0 -17 -537zm723 1249c-33,-85 -26,-177 -26,-268 0,-90 3,-176 -50,-247 -62,-82 -175,-94 -266,-92 -118,3 -294,45 -294,208 0,4 0,8 0,11l243 0c1,-22 9,-46 22,-63 22,-28 65,-29 85,4 23,37 2,83 -30,102 -32,19 -70,17 -105,20 -92,7 -218,15 -242,136 -11,55 10,120 51,155 56,48 140,57 208,42 58,-13 108,-43 133,-86 4,28 11,55 18,79l253 0zm-276 -161c-13,17 -34,26 -56,22 -29,-7 -48,-40 -41,-71 4,-16 14,-28 27,-36 22,-14 47,-24 70,-37l0 122zm981 -29c-3,180 -213,209 -339,209 -239,0 -345,-79 -360,-181l294 0c-2,25 20,49 51,57 30,7 77,-6 73,-47 -4,-39 -53,-46 -82,-49 -98,-8 -210,-6 -285,-86 -73,-78 -53,-201 33,-259 55,-37 140,-60 259,-60 198,0 294,64 320,151l-253 0c-6,-17 -23,-32 -45,-37 -19,-5 -41,-2 -56,12 -15,15 -15,41 -2,58 15,19 44,23 66,25 127,13 330,18 327,208z" fill="white"/>
+    </svg>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#what-we-wash">Что стираем</a></li>
+    <li><a href="#services">Цены</a></li>
+    <li><a href="#how">Как работает</a></li>
+    <li><a href="#features">Преимущества</a></li>
+    <li><a href="#promo">Акция</a></li>
+    <li><a href="#contacts" class="btn-nav">Контакты</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 BIG WASH. Прачечная самообслуживания.</p>
+</footer>
+
+<script>
+  /* Nav scroll */
+  const nav = document.getElementById('main-nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Burger menu */
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', () => {
+    const open = burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  /* Reveal observer */
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
+  revealEls.forEach(el => obs.observe(el));
+
+  /* Counter */
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.to;
+      const start = performance.now();
+      const update = (now) => {
+        const t = Math.min(1, (now - start) / 1200);
+        const ease = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(ease * target);
+        if (t < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+  /* ── SOAP BUBBLE CANVAS ── */
+  const canvas = document.getElementById('bubbleCanvas');
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0;
+  let bubbles = [];
+
+  function resize() {
+    W = canvas.offsetWidth;
+    H = canvas.offsetHeight;
+    canvas.width = W;
+    canvas.height = H;
+    if (!bubbles.length) initBubbles();
+  }
+
+  function mkBubble(startBelow = false) {
+    const r = 20 + Math.random() * 90;
+    return {
+      x: Math.random() * W,
+      y: startBelow ? H + r + Math.random() * 200 : Math.random() * H,
+      r,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: -(0.25 + Math.random() * 0.55),
+      phase: Math.random() * Math.PI * 2,
+      hue: Math.random() * 60 - 30,
+    };
+  }
+
+  function initBubbles() {
+    bubbles = Array.from({ length: 22 }, () => mkBubble(false));
+  }
+
+  function drawBubble(b) {
+    const { x, y, r } = b;
+    const bg = ctx.createRadialGradient(x - r*0.28, y - r*0.28, r*0.05, x, y, r);
+    bg.addColorStop(0,    'rgba(200,220,255,0.04)');
+    bg.addColorStop(0.65, 'rgba(120,160,255,0.02)');
+    bg.addColorStop(0.88, 'rgba(160,120,255,0.14)');
+    bg.addColorStop(1,    'rgba(80,200,255,0.06)');
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*2);
+    ctx.fillStyle = bg;
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba(180,200,255,0.32)';
+    ctx.lineWidth = r * 0.025 + 0.8;
+    ctx.stroke();
+
+    const hl = ctx.createRadialGradient(x - r*0.32, y - r*0.32, 0, x - r*0.28, y - r*0.28, r*0.38);
+    hl.addColorStop(0, 'rgba(255,255,255,0.58)');
+    hl.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI*2);
+    ctx.fillStyle = hl;
+    ctx.fill();
+
+    const bl = ctx.createRadialGradient(x + r*0.28, y + r*0.38, 0, x + r*0.22, y + r*0.3, r*0.28);
+    bl.addColorStop(0, 'rgba(160,240,255,0.28)');
+    bl.addColorStop(1, 'rgba(160,240,255,0)');
+    ctx.fillStyle = bl;
+    ctx.fill();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now() / 1000;
+    bubbles.forEach((b, i) => {
+      b.x += b.vx + Math.sin(t * 0.7 + b.phase) * 0.3;
+      b.y += b.vy;
+      drawBubble(b);
+      if (b.y < -b.r * 2) bubbles[i] = mkBubble(true);
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  animate();
+
+  /* ── BACKGROUND PAGE BUBBLES (lavender) ── */
+  (function() {
+    const bgC = document.getElementById('bgBubbleCanvas');
+    const bgCtx = bgC.getContext('2d');
+    let bW = 0, bH = 0, bBubbles = [];
+
+    function bgResize() {
+      bW = window.innerWidth;
+      bH = window.innerHeight;
+      bgC.width = bW;
+      bgC.height = bH;
+      if (!bBubbles.length) bgInit();
+    }
+
+    function bgMk(below) {
+      const r = 12 + Math.random() * 72;
+      return {
+        x: Math.random() * bW,
+        y: below ? bH + r + Math.random() * 300 : Math.random() * bH,
+        r,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: -(0.18 + Math.random() * 0.38),
+        phase: Math.random() * Math.PI * 2,
+      };
+    }
+
+    function bgInit() {
+      bBubbles = Array.from({ length: 18 }, () => bgMk(false));
+    }
+
+    function bgDraw(b) {
+      const { x, y, r } = b;
+      const grad = bgCtx.createRadialGradient(x - r*0.3, y - r*0.3, r*0.04, x, y, r);
+      grad.addColorStop(0,    'rgba(196,181,253,0.04)');
+      grad.addColorStop(0.6,  'rgba(139,92,246,0.02)');
+      grad.addColorStop(0.87, 'rgba(167,139,250,0.13)');
+      grad.addColorStop(1,    'rgba(124,58,237,0.05)');
+      bgCtx.beginPath();
+      bgCtx.arc(x, y, r, 0, Math.PI*2);
+      bgCtx.fillStyle = grad;
+      bgCtx.fill();
+
+      bgCtx.beginPath();
+      bgCtx.arc(x, y, r, 0, Math.PI*2);
+      bgCtx.strokeStyle = 'rgba(196,181,253,0.28)';
+      bgCtx.lineWidth = r * 0.022 + 0.6;
+      bgCtx.stroke();
+
+      const hl = bgCtx.createRadialGradient(x - r*0.3, y - r*0.32, 0, x - r*0.26, y - r*0.28, r*0.36);
+      hl.addColorStop(0, 'rgba(255,255,255,0.52)');
+      hl.addColorStop(1, 'rgba(255,255,255,0)');
+      bgCtx.beginPath();
+      bgCtx.arc(x, y, r, 0, Math.PI*2);
+      bgCtx.fillStyle = hl;
+      bgCtx.fill();
+
+      const sh = bgCtx.createRadialGradient(x + r*0.25, y + r*0.35, 0, x + r*0.2, y + r*0.28, r*0.26);
+      sh.addColorStop(0, 'rgba(216,180,254,0.26)');
+      sh.addColorStop(1, 'rgba(216,180,254,0)');
+      bgCtx.fillStyle = sh;
+      bgCtx.fill();
+    }
+
+    function bgAnimate() {
+      bgCtx.clearRect(0, 0, bW, bH);
+      const t = Date.now() / 1000;
+      bBubbles.forEach((b, i) => {
+        b.x += b.vx + Math.sin(t * 0.5 + b.phase) * 0.25;
+        b.y += b.vy;
+        bgDraw(b);
+        if (b.y < -b.r * 2) bBubbles[i] = bgMk(true);
+      });
+      requestAnimationFrame(bgAnimate);
+    }
+
+    window.addEventListener('resize', bgResize);
+    bgResize();
+    bgAnimate();
+  })();
+</script>
+
+</body>
+</html>

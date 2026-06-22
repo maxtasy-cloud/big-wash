@@ -1,0 +1,6 @@
+make_favicon.py
+graphify-out/
+index-1.html
+index-3.html
+__pycache__/
+*.pyc
