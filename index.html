@@ -62,7 +62,7 @@
     </h1>
     <p class="hero-desc">
       Профессиональные машины ASKO, большой барабан 10 кг для любых вещей.
-      Постирали, высушили, забрали — всего за полтора часа.
+      Постирали, высушили, забрали — всего за полтора часа. Дыбенко, д 8/3, у подъезда 1 (где Озон)
     </p>
     <div class="hero-actions">
       <a href="#services" class="btn-gradient">✦ Цены и услуги</a>
@@ -269,6 +269,21 @@
   </div>
   <div class="reveal reveal-s3">
     <a href="#contacts" class="btn-gradient">Узнать подробнее</a>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div style="text-align:center;margin-bottom:52px;">
+    <div class="section-tag reveal">Отзывы</div>
+    <h2 class="section-h2 reveal reveal-s1">Что говорят наши клиенты</h2>
+    <p class="section-sub reveal reveal-s2">Пять звёзд — и это не случайность</p>
+  </div>
+  <div class="reviews-outer reveal">
+    <div class="reviews-viewport">
+      <div class="reviews-track" id="reviewsTrack"></div>
+    </div>
+    <div class="reviews-dots" id="reviewsDots"></div>
   </div>
 </section>
 
@@ -532,6 +547,81 @@
     window.addEventListener('resize', bgResize);
     bgResize();
     bgAnimate();
+  })();
+
+  /* ── REVIEWS CAROUSEL ── */
+  (function() {
+    var REVIEWS = [
+      { name: 'Наталья Х.', photo: 'photos/natalia-h.jpg',  text: 'Живу в общежитии, искала прачечную рядом и вот нашла идеальное место, привезла чемодан на колёсах с бельём, 1 час — и всё бельё чистое и сухое. Спасибо вам, что открыли здесь прачечную.' },
+      { name: 'Георгий А.', photo: 'photos/georgiy-a.jpg',  text: 'Уютная прачечная, всегда чисто, техподдержка всегда на связи, всегда помогут ребята. Акции часто проходят. Очень удобно, хотя не совсем рядом. На машине приходится приезжать, бесплатная большая парковка у входа. Супер! Развивайтесь, удачи вам!' },
+      { name: 'Марина В.',  photo: 'photos/marina-b.jpg',   text: 'Как по мне, в прачечной должно быть как в элитном отеле. Посетители довольны, а сервис на высшем уровне. Так вот BigWash — это пятизвёздочная прачечная.' },
+      { name: 'Арина М.',   photo: 'photos/arina-m.jpg',    text: 'Легко найти данный пункт прачечной самообслуживания. Всегда чисто. Стирка качественная и экономичная. Оплата в любой форме (наличные, карта). Оборудование новое, работает безупречно. Сервис — супер! Техподдержка готова помочь в любое время. Желаю этой сети развиваться и открывать новые пункты.' },
+      { name: 'Алёна К.',   photo: 'photos/alyona-k.jpg',   text: 'Спасибо, что открыли прачечную в нашем районе, а то не знала где пледы, одеяла, подушки постирать и посушить. Теперь вы под боком. Удобно, можно картой оплатить. Рекомендую.' },
+    ];
+
+    var track    = document.getElementById('reviewsTrack');
+    var dotsWrap = document.getElementById('reviewsDots');
+    if (!track || !dotsWrap) return;
+
+    var DESKTOP = 3;
+    var cur = 0;
+    var timer;
+
+    function visible() { return window.innerWidth <= 900 ? 1 : DESKTOP; }
+
+    function mkCard(r) {
+      var d = document.createElement('div');
+      d.className = 'review-card';
+      d.innerHTML =
+        '<div class="review-card-inner">' +
+          '<span class="review-quote">&#10077;</span>' +
+          '<span class="review-stars">★★★★★</span>' +
+          '<p class="review-text">' + r.text + '</p>' +
+          '<div class="review-author">' +
+            '<img class="review-avatar" src="' + r.photo + '" alt="' + r.name + '" loading="lazy">' +
+            '<span class="review-name">' + r.name + '</span>' +
+          '</div>' +
+        '</div>';
+      return d;
+    }
+
+    REVIEWS.forEach(function(r) { track.appendChild(mkCard(r)); });
+    REVIEWS.slice(0, DESKTOP).forEach(function(r) { track.appendChild(mkCard(r)); });
+
+    REVIEWS.forEach(function(_, i) {
+      var dot = document.createElement('div');
+      dot.className = 'rev-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', function() { goTo(i); resetTimer(); });
+      dotsWrap.appendChild(dot);
+    });
+
+    function cardW() { return track.children[0] ? track.children[0].offsetWidth : 0; }
+
+    function goTo(idx, instant) {
+      cur = idx;
+      track.style.transition = instant ? 'none' : '';
+      track.style.transform = 'translateX(-' + (cur * cardW()) + 'px)';
+      dotsWrap.querySelectorAll('.rev-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === cur % REVIEWS.length);
+      });
+    }
+
+    function next() {
+      var nxt = cur + 1;
+      goTo(nxt);
+      if (nxt >= REVIEWS.length) {
+        setTimeout(function() { goTo(0, true); }, 720);
+      }
+    }
+
+    function resetTimer() { clearInterval(timer); timer = setInterval(next, 5000); }
+
+    resetTimer();
+    window.addEventListener('resize', function() {
+      requestAnimationFrame(function() { goTo(cur % REVIEWS.length, true); });
+    });
+    track.addEventListener('mouseenter', function() { clearInterval(timer); });
+    track.addEventListener('mouseleave', resetTimer);
   })();
 </script>
 
